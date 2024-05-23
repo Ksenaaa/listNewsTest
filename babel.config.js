@@ -30,6 +30,7 @@ module.exports = {
                 path: '.env',
             },
         ],
+        ['@babel/plugin-transform-private-methods', { loose: true }],
         'react-native-reanimated/plugin',
     ],
 };
