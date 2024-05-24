@@ -1,3 +1,16 @@
 export interface News {
-    id: string
+    id: string,
+    title: string,
+    description: string,
+    img: string,
+    link: string,
+    date: string,
+}
+
+export interface NewsCard {
+    id: string,
+    title: string,
+    description: string,
+    img: string,
+    date: string
 }

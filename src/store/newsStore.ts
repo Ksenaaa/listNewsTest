@@ -1,9 +1,10 @@
-import { News } from 'model/news';
 import { create } from 'zustand';
 
+import { NewsCard } from 'model/news';
+
 interface NewsStore {
-    news: News[],
-    addNews: (dataNews: News[]) => void
+    news: NewsCard[],
+    addNews: (dataNews: NewsCard[]) => void
 }
 
 const useNewsStore = create<NewsStore>((set) => ({
