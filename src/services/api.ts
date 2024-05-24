@@ -40,7 +40,7 @@ export async function put(path: string, body: any) {
         method: 'put',
         headers,
         body: JSON.stringify(body)
-    })); ``
+    }));
 }
 
 async function http(request: RequestInfo) {

@@ -1,62 +1,45 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from 'utils/constants/Colors';
+import { TypographyStyles } from 'utils/constants/Typography';
 
 export const stylesItemListNews = StyleSheet.create({
     container: {
         backgroundColor: Colors.white,
-        height: 190,
-        marginVertical: 8,
-        padding: 20,
-        borderColor: Colors.grey,
-        borderWidth: 1,
-        borderRadius: 15,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        gap: 10,
-        shadowColor: Colors.black,
+        marginHorizontal: 30,
+        marginVertical: 20,
+        borderRadius: 10,
+        overflow: 'hidden',
+        shadowColor: Colors.greyLight,
         shadowOffset: {
-            width: 0,
-            height: 2,
+            width: 1,
+            height: 5,
         },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
+        elevation: 10,
     },
     wrapperImg: {
-        flex: 1,
+        overflow: 'hidden',
+        height: 195,
+    },
+    img: {
+        width: '100%',
+        height: '100%',
     },
     wrapperDesc: {
         flex: 1,
         justifyContent: 'space-between',
+        padding: 18.2,
     },
-    itemCode: {
-        fontSize: 10,
-        marginBottom: 4,
+    descTitle: {
+        marginBottom: 10,
+        ...TypographyStyles.semobold,
     },
-    itemName: {
-        fontSize: 18,
-        marginBottom: 4,
+    descText: {
+        marginBottom: 5,
+        ...TypographyStyles.light,
     },
-    itemCategory: {
-        fontSize: 14,
-        marginBottom: 6,
-    },
-    itemPrice: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: Colors.gold,
-        marginLeft: 'auto',
-    },
-    wrapperProductMaterials: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        gap: 6,
-        marginBottom: 'auto',
-    },
-    productMaterial: {
-        borderRadius: 12,
-        overflow: 'hidden',
-        width: 20,
-        height: 20,
+    descTimeAgo: {
+        ...TypographyStyles.extraLight,
+        color: Colors.grey,
     },
 });
