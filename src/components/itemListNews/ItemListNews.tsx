@@ -5,25 +5,35 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { RootStackNavigatorParamsList } from 'model/RootStackNavigatorParamsList';
 import { NewsCard } from 'model/news';
+import useNewsStore from 'store/newsStore';
 import { ScreenNames } from 'utils/constants/ScreenNames';
+import { formatDateAgo } from 'utils/helpers/formatDateAgo';
 
 import { stylesItemListNews as styles } from './ItemListNews.styles';
 
 interface Props {
     item: NewsCard;
+    onOpenModalManager: () => void;
 }
 
-export const ItemListNews = ({ item }: Props) => {
+export const ItemListNews = ({ item, onOpenModalManager }: Props) => {
+    const getPost = useNewsStore((state) => state.getPost);
+
     const navigation = useNavigation<NativeStackNavigationProp<RootStackNavigatorParamsList>>();
 
     const handleNavigateToPost = () => {
-        navigation.navigate(ScreenNames.NEWS_POST, { postId: item.id });
+        getPost(item.id);
+        navigation.navigate(ScreenNames.NEWS_POST, { postTitle: item.title });
     };
 
     return (
-        <TouchableOpacity style={styles.container} onPress={handleNavigateToPost}>
+        <TouchableOpacity
+            style={styles.container}
+            onPress={handleNavigateToPost}
+            onLongPress={onOpenModalManager}
+        >
             <View style={styles.wrapperImg}>
-                <Image style={styles.img} source={require('assets/jpg/img_news.jpeg')} />
+                <Image style={styles.img} source={{ uri: item.img }} />
             </View>
             <View style={styles.wrapperDesc}>
                 <Text style={styles.descTitle} numberOfLines={1}>
@@ -32,7 +42,7 @@ export const ItemListNews = ({ item }: Props) => {
                 <Text style={styles.descText} numberOfLines={1}>
                     {item.description}
                 </Text>
-                <Text style={styles.descTimeAgo}>{item.date}</Text>
+                <Text style={styles.descTimeAgo}>{formatDateAgo(item.date)}</Text>
             </View>
         </TouchableOpacity>
     );

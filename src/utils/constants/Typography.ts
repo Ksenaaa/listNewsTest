@@ -21,7 +21,6 @@ export const TypographyStyles: TypographyInterface = {
     light: {
         fontWeight: '300',
         fontSize: 16,
-        lineHeight: 16,
         color: Colors.black
     },
     extraLight: {
