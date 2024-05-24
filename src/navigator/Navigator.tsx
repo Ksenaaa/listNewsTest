@@ -2,6 +2,7 @@ import React from 'react';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { HeaderWithBack } from 'components/headerWithBack/HeaderWithBack';
 import { RootStackNavigatorParamsList } from 'model/RootStackNavigatorParamsList';
 import { CreatePostScreen } from 'screens/CreatePostScreen';
 import { HomeScreen } from 'screens/HomeScreen';
@@ -23,7 +24,13 @@ export const Navigator = () => {
                 component={CreatePostScreen}
                 options={{ title: 'New post' }}
             />
-            <Stack.Screen name={ScreenNames.NEWS_POST} component={NewsPostScreen} />
+            <Stack.Screen
+                name={ScreenNames.NEWS_POST}
+                component={NewsPostScreen}
+                options={({ route }) => ({
+                    header: () => <HeaderWithBack title={route.params.postTitle} />,
+                })}
+            />
         </Stack.Navigator>
     );
 };
