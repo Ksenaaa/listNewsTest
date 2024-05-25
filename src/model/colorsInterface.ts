@@ -8,4 +8,5 @@ export interface ColorsInterface {
     bittersweet: string;
     blue: string;
     bluelight: string,
+    backgroundOverlay: string,
 }

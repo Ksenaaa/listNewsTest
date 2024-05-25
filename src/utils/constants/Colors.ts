@@ -10,4 +10,5 @@ export const Colors: ColorsInterface = {
     bittersweet: '#FF6363',
     blue: '#456EFE',
     bluelight: 'rgba(69, 110, 254, 0.3)',
+    backgroundOverlay: 'rgba(0, 0, 0, 0.4)'
 };

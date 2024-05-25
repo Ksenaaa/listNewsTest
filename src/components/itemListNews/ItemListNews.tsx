@@ -18,6 +18,7 @@ interface Props {
 
 export const ItemListNews = ({ item, onOpenModalManager }: Props) => {
     const getPost = useNewsStore((state) => state.getPost);
+    const onCheckPost = useNewsStore((state) => state.onCheckPost);
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackNavigatorParamsList>>();
 
@@ -26,14 +27,21 @@ export const ItemListNews = ({ item, onOpenModalManager }: Props) => {
         navigation.navigate(ScreenNames.NEWS_POST, { postTitle: item.title });
     };
 
+    const handleLongPress = () => {
+        onCheckPost(item.id);
+        onOpenModalManager();
+    };
+
     return (
         <TouchableOpacity
             style={styles.container}
             onPress={handleNavigateToPost}
-            onLongPress={onOpenModalManager}
+            onLongPress={handleLongPress}
         >
             <View style={styles.wrapperImg}>
-                <Image style={styles.img} source={{ uri: item.img }} />
+                {/* // TODO: customize pictures */}
+                {/* <Image style={styles.img} source={{ uri: item.img }} /> */}
+                <Image style={styles.img} source={require('assets/jpg/img_news.jpeg')} />
             </View>
             <View style={styles.wrapperDesc}>
                 <Text style={styles.descTitle} numberOfLines={1}>
