@@ -4,17 +4,13 @@ import { ItemListNews } from 'components/itemListNews/ItemListNews';
 import { NoResults } from 'components/noResults/NoResults';
 import useNewsStore from 'store/newsStore';
 
-interface Props {
-    onOpenModal: () => void;
-}
-
-export const ListNews = ({ onOpenModal }: Props) => {
+export const ListNews = () => {
     const news = useNewsStore((state) => state.news);
 
     return (
         <FlatList
             data={news}
-            renderItem={({ item }) => <ItemListNews item={item} onOpenModalManager={onOpenModal} />}
+            renderItem={({ item }) => <ItemListNews item={item} />}
             keyExtractor={(item) => item.id}
             ListEmptyComponent={<NoResults />}
         />
