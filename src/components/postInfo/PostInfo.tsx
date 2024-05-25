@@ -13,7 +13,9 @@ export const PostInfo = ({ newsPost }: Props) => {
     return (
         <ScrollView>
             <View style={styles.wrapperImg}>
-                <Image style={styles.img} source={{ uri: newsPost.img }} />
+                {/* // TODO: customize pictures */}
+                {/* <Image style={styles.img} source={{ uri: newsPost.img }} /> */}
+                <Image style={styles.img} source={require('assets/jpg/img_news.jpeg')} />
             </View>
             <View style={styles.wrapperDesc}>
                 <Text style={styles.descDate}>{formatDate(newsPost.date)}</Text>
