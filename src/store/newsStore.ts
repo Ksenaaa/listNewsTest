@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { News, NewsCard } from 'model/news';
+import { NewPostForCreate, News, NewsCard } from 'model/news';
 import { dataNews } from 'data/dataNews';
 
 interface NewsStore {
@@ -10,7 +10,7 @@ interface NewsStore {
     getPost: (id: string) => void,
     onCheckPost: (id: string) => void,
     onDeletePost: () => void
-    addNews: (dataNews: NewsCard[]) => void
+    onSetNewPost: (dataNewPost: NewPostForCreate) => void
 }
 
 const useNewsStore = create<NewsStore>((set, get) => ({
@@ -34,12 +34,15 @@ const useNewsStore = create<NewsStore>((set, get) => ({
             checkedPostId: ''
         });
     },
-    addNews: (dataNews) => {
-        set({
-            news: dataNews
-        });
+    onSetNewPost: (dataNews) => {
+        const newPost = {
+            ...dataNews,
+            id: Math.random().toString(),
+            date: new Date().toISOString(),
+        }
+
+        set((state) => ({ news: [newPost, ...state.news] }))
     }
-})
-);
+}))
 
 export default useNewsStore;

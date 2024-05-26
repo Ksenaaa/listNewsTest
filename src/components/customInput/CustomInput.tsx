@@ -1,4 +1,12 @@
-import { TextInput, View, ViewStyle } from 'react-native';
+import {
+    NativeSyntheticEvent,
+    TextInput,
+    TextInputContentSizeChangeEventData,
+    View,
+    ViewStyle,
+} from 'react-native';
+
+import { Colors } from 'utils/constants/Colors';
 
 import { stylesCustomInput as styles } from './CustomInput.styles';
 
@@ -6,22 +14,40 @@ interface Props {
     placeholder?: string;
     value?: string;
     isMultiline?: boolean;
-    onChange?: () => void;
     style?: ViewStyle;
+    onChange?: () => void;
+    onSetSize?: (sizeHeight: number) => void;
 }
 
-export const CustomInput = ({ placeholder, onChange, value, isMultiline, style }: Props) => {
+export const CustomInput = ({
+    placeholder,
+    value,
+    isMultiline,
+    style,
+    onChange,
+    onSetSize,
+}: Props) => {
+    const handleContentSizeChange = (
+        event: NativeSyntheticEvent<TextInputContentSizeChangeEventData>
+    ) => {
+        if (!isMultiline || !onSetSize) return;
+
+        const { contentSize } = event.nativeEvent;
+        onSetSize(contentSize.height);
+    };
+
     return (
         <View style={styles.containerInput}>
             <TextInput
                 style={[styles.input, style]}
                 onChangeText={onChange}
                 multiline={isMultiline}
+                onContentSizeChange={handleContentSizeChange}
                 numberOfLines={4}
-                maxLength={40}
                 value={value}
                 placeholder={placeholder}
-                keyboardType="numeric"
+                placeholderTextColor={Colors.grey}
+                textAlignVertical="top"
             />
         </View>
     );

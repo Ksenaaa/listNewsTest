@@ -13,10 +13,9 @@ import { stylesItemListNews as styles } from './ItemListNews.styles';
 
 interface Props {
     item: NewsCard;
-    onOpenModalManager: () => void;
 }
 
-export const ItemListNews = ({ item, onOpenModalManager }: Props) => {
+export const ItemListNews = ({ item }: Props) => {
     const getPost = useNewsStore((state) => state.getPost);
     const onCheckPost = useNewsStore((state) => state.onCheckPost);
 
@@ -29,7 +28,7 @@ export const ItemListNews = ({ item, onOpenModalManager }: Props) => {
 
     const handleLongPress = () => {
         onCheckPost(item.id);
-        onOpenModalManager();
+        navigation.navigate(ScreenNames.MODAL_HOME);
     };
 
     return (

@@ -6,6 +6,7 @@ import { HeaderWithBack } from 'components/headerWithBack/HeaderWithBack';
 import { RootStackNavigatorParamsList } from 'model/RootStackNavigatorParamsList';
 import { CreatePostScreen } from 'screens/CreatePostScreen';
 import { HomeScreen } from 'screens/HomeScreen';
+import { ModalHomeScreen } from 'screens/ModalHomeScreen';
 import { NewsPostScreen } from 'screens/NewsPostScreen';
 import { ScreenNames } from 'utils/constants/ScreenNames';
 
@@ -22,7 +23,9 @@ export const Navigator = () => {
             <Stack.Screen
                 name={ScreenNames.CREATE_POST}
                 component={CreatePostScreen}
-                options={{ title: 'New post' }}
+                options={{
+                    header: () => <HeaderWithBack title={'New post'} />,
+                }}
             />
             <Stack.Screen
                 name={ScreenNames.NEWS_POST}
@@ -30,6 +33,11 @@ export const Navigator = () => {
                 options={({ route }) => ({
                     header: () => <HeaderWithBack title={route.params.postTitle} />,
                 })}
+            />
+            <Stack.Screen
+                options={{ presentation: 'containedTransparentModal', headerShown: false }}
+                name={ScreenNames.MODAL_HOME}
+                component={ModalHomeScreen}
             />
         </Stack.Navigator>
     );

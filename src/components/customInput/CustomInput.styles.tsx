@@ -1,16 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 import { Colors } from 'utils/constants/Colors';
+import { TypographyStyles } from 'utils/constants/Typography';
 
 export const stylesCustomInput = StyleSheet.create({
     containerInput: {
         flex: 1,
     },
     input: {
-        height: '100%',
-        width: '100%',
+        flex: 1,
         borderRadius: 10,
-        padding: 14,
+        ...TypographyStyles.regular,
         backgroundColor: Colors.greyLightTransparent15,
     },
 });
