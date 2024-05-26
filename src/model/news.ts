@@ -3,6 +3,7 @@ export interface News {
     title: string,
     description: string,
     img: string,
+    link: string,
     date: string,
 }
 
@@ -11,5 +12,13 @@ export interface NewsCard {
     title: string,
     description: string,
     img: string,
+    link: string,
     date: string
+}
+
+export interface NewPostForCreate {
+    title: string;
+    description: string;
+    img: string;
+    link: string;
 }

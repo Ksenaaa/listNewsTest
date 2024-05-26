@@ -1,21 +1,10 @@
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ContainerPage } from 'components/containerPage/ContainerPage';
+import { CreateNewPost } from 'components/createNewPost/CreateNewPost';
 
 export const CreatePostScreen = () => {
     return (
-        <SafeAreaView style={styles.container}>
-            <Text style={styles.sectionTitle}>{'CreatePostScreen'}</Text>
-        </SafeAreaView>
+        <ContainerPage>
+            <CreateNewPost />
+        </ContainerPage>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        marginTop: 100,
-        color: 'black',
-    },
-});

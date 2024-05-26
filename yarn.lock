@@ -1274,6 +1274,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@hookform/resolvers@^3.4.2":
+  "integrity" "sha512-1m9uAVIO8wVf7VCDAGsuGA0t6Z3m6jVGAN50HkV9vYLl0yixKK/Z1lr01vaRvYCkIKGoy1noVRxMzQYb4y/j1Q=="
+  "resolved" "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-3.4.2.tgz"
+  "version" "3.4.2"
+
 "@humanwhocodes/config-array@^0.11.14":
   "integrity" "sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.11.14.tgz"
@@ -6267,7 +6272,7 @@
   "resolved" "https://registry.npmjs.org/react-freeze/-/react-freeze-1.0.4.tgz"
   "version" "1.0.4"
 
-"react-hook-form@^7.51.5":
+"react-hook-form@^7.0.0", "react-hook-form@^7.51.5":
   "integrity" "sha512-J2ILT5gWx1XUIJRETiA7M19iXHlG74+6O3KApzvqB/w8S5NQR7AbU8HVZrMALdmDgWpRPYiZJl0zx8Z4L2mP6Q=="
   "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.51.5.tgz"
   "version" "7.51.5"

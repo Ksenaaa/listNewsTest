@@ -23,7 +23,9 @@ export const Navigator = () => {
             <Stack.Screen
                 name={ScreenNames.CREATE_POST}
                 component={CreatePostScreen}
-                options={{ title: 'New post' }}
+                options={{
+                    header: () => <HeaderWithBack title={'New post'} />,
+                }}
             />
             <Stack.Screen
                 name={ScreenNames.NEWS_POST}
