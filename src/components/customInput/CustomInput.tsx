@@ -15,7 +15,7 @@ interface Props {
     value?: string;
     isMultiline?: boolean;
     style?: ViewStyle;
-    onChange?: () => void;
+    onChange?: (text: string) => void;
     onSetSize?: (sizeHeight: number) => void;
 }
 

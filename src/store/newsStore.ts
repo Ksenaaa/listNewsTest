@@ -7,16 +7,22 @@ interface NewsStore {
     news: NewsCard[],
     newsPost: News | null,
     checkedPostId: string,
+    searchText: string,
+    refreshing: boolean,
     getPost: (id: string) => void,
     onCheckPost: (id: string) => void,
-    onDeletePost: () => void
-    onSetNewPost: (dataNewPost: NewPostForCreate) => void
+    onDeletePost: () => void,
+    onSetNewPost: (dataNewPost: NewPostForCreate) => void,
+    onSearchPost: (text: string) => void,
+    onRefreshNews: () => void
 }
 
 const useNewsStore = create<NewsStore>((set, get) => ({
     news: dataNews,
     newsPost: null,
     checkedPostId: '',
+    searchText: '',
+    refreshing: false,
     getPost: (id) => {
         const foundPost = get().news.filter(news => news.id === id)[0]
         set({
@@ -29,19 +35,45 @@ const useNewsStore = create<NewsStore>((set, get) => ({
         });
     },
     onDeletePost: () => {
-        set({
-            news: get().news.filter(news => news.id !== get().checkedPostId),
+        set((state) => ({
+            news: state.news.filter(news => news.id !== get().checkedPostId),
             checkedPostId: ''
-        });
+        }))
     },
-    onSetNewPost: (dataNews) => {
+    onSetNewPost: (dataNewPost) => {
         const newPost = {
-            ...dataNews,
+            ...dataNewPost,
             id: Math.random().toString(),
             date: new Date().toISOString(),
         }
 
-        set((state) => ({ news: [newPost, ...state.news] }))
+        set({
+            news: [newPost, ...dataNews],
+            searchText: ''
+        })
+    },
+    onSearchPost: (text) => {
+        const textToLower = text.toLowerCase();
+        const foundPosts = dataNews
+            .filter(post => post.title.toLowerCase().includes(textToLower) || post.description.toLowerCase().includes(textToLower));
+
+        set({
+            news: foundPosts,
+            searchText: text
+        })
+    },
+    onRefreshNews: () => {
+        set({
+            refreshing: true
+        });
+
+        const newData = dataNews;
+
+        set({
+            news: newData,
+            refreshing: false,
+            searchText: ''
+        });
     }
 }))
 
