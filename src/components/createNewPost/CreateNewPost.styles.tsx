@@ -3,17 +3,17 @@ import { StyleSheet } from 'react-native';
 export const stylesCreateNewPost = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 36,
-        paddingHorizontal: 30,
-        paddingBottom: 50,
-        gap: 25,
-        justifyContent: 'space-between',
     },
     formWrapper: {
+        flex: 1,
         gap: 25,
+        paddingTop: 36,
+        paddingHorizontal: 30,
     },
     buttonWrapper: {
-        paddingHorizontal: 4,
+        marginHorizontal: 34,
+        marginTop: 25,
+        marginBottom: 40,
     },
     inputTex: {
         paddingHorizontal: 30,

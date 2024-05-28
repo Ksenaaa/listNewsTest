@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ScrollView, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigation } from '@react-navigation/native';
@@ -45,7 +45,10 @@ export const CreateNewPost = () => {
     });
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={styles.container}
+        >
             <ScrollView>
                 <View style={styles.formWrapper}>
                     <Controller
@@ -105,6 +108,6 @@ export const CreateNewPost = () => {
             <View style={styles.buttonWrapper}>
                 <CustomButton text="Public" onPress={handleCreatePost} isDisabled={!isValid} />
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
